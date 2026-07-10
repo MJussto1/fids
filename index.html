@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIDS - Panel de Vuelos Integrado</title>
+    <style>
+        html, body { 
+            background-color: #000000; 
+            color: #FFFFFF; 
+            font-family: 'Segoe UI', -apple-system, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden; 
+            box-sizing: border-box;
+        }
+        
+        .fids-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 1.5vh 1.5vw;
+            box-sizing: border-box;
+        }
+        
+        /* CABECERA GENERAL SIN LOGOS */
+        .header { 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0.4vh solid #FFB300; 
+            padding-bottom: 0.8vh; 
+            margin-bottom: 1vh; 
+            flex-shrink: 0;
+        }
+        
+        .top-airport-title { 
+            font-size: 3.8vh; 
+            font-weight: 900; 
+            color: #FFFFFF; 
+            text-transform: uppercase; 
+            margin: 0; 
+            letter-spacing: 2px; 
+        }
+        
+        .clock { color: #FFB300; font-size: 3.8vh; font-weight: bold; font-variant-numeric: tabular-nums; }
+        
+        /* DISEÑO COMPARTIDO EN DOS SECCIONES */
+        .fids-split-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            height: calc(100vh - 10vh);
+            justify-content: space-between;
+        }
+        
+        .fids-section { 
+            width: 100%; 
+            height: 46%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* LÍNEA SEPARADORA MEDIAL */
+        .linea-separadora {
+            border-top: 0.5vh solid #FFB300;
+            margin: 0.8vh 0;
+            flex-shrink: 0;
+            width: 100%;
+        }
+        
+        /* TEXTOS OPERATIVOS CENTRALIZADOS */
+        .section-title {
+            font-size: 3.2vh;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0 0 0.8vh 0;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        
+        .title-salidas { color: #4ade80; }
+        .title-llegadas { color: #38bdf8; }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            table-layout: fixed;
+        }
+        
+        th { 
+            text-align: left; 
+            color: #8E8E93; 
+            border-bottom: 0.3vh solid #2C2C2E; 
+            padding: 0.6vh 0.8vw; 
+            font-size: 1.8vh; 
+            text-transform: uppercase; 
+        }
+        
+        td { 
+            height: 6vh; 
+            padding: 0.4vh 0.8vw; 
+            border-bottom: 1px solid #1C1C1E; 
+            vertical-align: middle; 
+            font-size: 2.8vh; 
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+        }
+        
+        .vuelo { color: #FFB300; }
+        .destino { color: #FFFFFF; }
+        .hora { color: #FFFFFF; }
+        .sala { color: #FFFFFF; }
+        
+        .estatus { text-transform: uppercase; }
+        .estatus-a-tiempo { color: #00FF00; }
+        .estatus-demorado { color: #FF3B30; }
+        .estatus-arrivado { color: #34C759; }
+        
+        .logo-aerolinea { 
+            height: 5vh !important;       
+            max-height: none !important; 
+            max-width: 95%;
+            object-fit: contain;
+            display: inline-block; 
+            vertical-align: middle;
+        }
+        
+        .texto-aerolinea { 
+            color: #FFFFFF; 
+            font-size: 2.5vh; 
+        }
+        
+        .resaltado { background-color: #b45309 !important; animation: blink 2s infinite; }
+        .resaltado td, .resaltado .vuelo { color: #ffffff !important; }
+        
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="fids-container">
+        <div class="header">
+            <div class="top-airport-title">AEROPUERTO INTERNACIONAL DE PUEBLA</div>
+            <div class="clock" id="liveClock">00:00</div>
+        </div>
+        
+        <div class="fids-split-wrapper">
+            <!-- MITAD SUPERIOR: SALIDAS -->
+            <div class="fids-section">
+                <div class="section-title title-salidas">Salidas / Departures</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Destino</th>
+                            <th style="width: 20%;">Aerolínea</th>
+                            <th style="width: 15%;">Vuelo</th>
+                            <th style="width: 15%;">Hora</th>
+                            <th style="width: 10%;">Puerta</th>
+                            <th style="width: 15%;">Estatus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodySalidas"></tbody>
+                </table>
+            </div>
+            
+            <!-- LÍNEA DIVISORIA DE CONTROL -->
+            <div class="linea-separadora"></div>
+            
+            <!-- MITAD INFERIOR: LLEGADAS -->
+            <div class="fids-section">
+                <div class="section-title title-llegadas">Llegadas / Arrivals</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Origen</th>
+                            <th style="width: 25%;">Aerolínea</th>
+                            <th style="width: 15%;">Vuelo</th>
+                            <th style="width: 15%;">Hora</th>
+                            <th style="width: 15%;">Estatus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyLlegadas"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inyección estructural de datos JSON desde Python
+        const arrSalidas = [{"clase_fila": "", "origen_destino": "SJD", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "644", "hora": "13:25:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3221", "hora": "13:34:00", "sala_puerta": "4", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2027", "hora": "14:35:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3223", "hora": "17:45:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "BJX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "604", "hora": "19:00:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1397", "hora": "20:18:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5117", "hora": "21:25:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3245", "hora": "21:50:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4009", "hora": "23:00:00", "sala_puerta": "2", "estatus": "A TIEMPO"}];
+        const arrLlegadas = [{"clase_fila": " resaltado", "origen_destino": "HUX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "613", "hora": "12:43:00", "sala_puerta": "", "estatus": "ARRIVADO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3552", "hora": "12:53:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2026", "hora": "13:55:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3554", "hora": "16:38:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "SJD", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "645", "hora": "18:24:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1396", "hora": "19:37:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "LAX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1782", "hora": "20:44:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5116", "hora": "21:00:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3344", "hora": "21:15:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "BJX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "605", "hora": "21:48:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4008", "hora": "22:20:00", "sala_puerta": "", "estatus": "A TIEMPO"}];
+        
+        let indexSalidas = 0;
+        let indexLlegadas = 0;
+        const LIMITE_FILAS = 5;
+        
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('liveClock').textContent = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+        }
+        setInterval(updateClock, 1000); 
+        updateClock();
+
+        function renderTablas() {
+            // Renderizar Bloque Dinámico de Salidas
+            const tSalidas = document.getElementById('bodySalidas');
+            tSalidas.innerHTML = '';
+            let sBloque = arrSalidas.slice(indexSalidas, indexSalidas + LIMITE_FILAS);
+            
+            sBloque.forEach(v => {
+                let cls = v.estatus.toUpperCase().includes("ARRIVADO") ? "estatus-arrivado" : 
+                          (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO") ? "estatus-demorado" : "estatus-a-tiempo");
+                tSalidas.innerHTML += `
+                    <tr class="${v.clase_fila}">
+                        <td class="vuelo" style="width: 25%;">${v.origen_destino}</td>
+                        <td style="width: 20%;">${v.aerolinea}</td>
+                        <td class="destino" style="width: 15%;">${v.vuelo}</td>
+                        <td class="hora" style="width: 15%;">${v.hora}</td>
+                        <td class="sala" style="width: 10%;">${v.sala_puerta}</td>
+                        <td class="estatus ${cls}" style="width: 15%;">${v.estatus}</td>
+                    </tr>`;
+            });
+
+            // Renderizar Bloque Dinámico de Llegadas
+            const tLlegadas = document.getElementById('bodyLlegadas');
+            tLlegadas.innerHTML = '';
+            let lBloque = arrLlegadas.slice(indexLlegadas, indexLlegadas + LIMITE_FILAS);
+            
+            lBloque.forEach(v => {
+                let cls = v.estatus.toUpperCase().includes("ARRIVADO") ? "estatus-arrivado" : 
+                          (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO") ? "estatus-demorado" : "estatus-a-tiempo");
+                tLlegadas.innerHTML += `
+                    <tr class="${v.clase_fila}">
+                        <td class="vuelo" style="width: 30%;">${v.origen_destino}</td>
+                        <td style="width: 25%;">${v.aerolinea}</td>
+                        <td class="destino" style="width: 15%;">${v.vuelo}</td>
+                        <td class="hora" style="width: 15%;">${v.hora}</td>
+                        <td class="estatus ${cls}" style="width: 15%;">${v.estatus}</td>
+                    </tr>`;
+            });
+        }
+
+        function paginarContenidos() {
+            // Avanzar Salidas en bloques de 5
+            if (arrSalidas.length > LIMITE_FILAS) {
+                indexSalidas = (indexSalidas + LIMITE_FILAS) >= arrSalidas.length ? 0 : indexSalidas + LIMITE_FILAS;
+            }
+            // Avanzar Llegadas en bloques de 5
+            if (arrLlegadas.length > LIMITE_FILAS) {
+                indexLlegadas = (indexLlegadas + LIMITE_FILAS) >= arrLlegadas.length ? 0 : indexLlegadas + LIMITE_FILAS;
+            }
+            renderTablas();
+        }
+
+        // Inicialización primaria
+        renderTablas();
+        
+        // Ejecución cíclica interna de paginación cada 15 segundos
+        setInterval(paginarContenidos, 15000);
+        
+        // Recarga dura del archivo HTML para obtener los datos nuevos procesados por Python
+        setTimeout(function() {
+            const url = new URL(window.location.href);
+            url.searchParams.set('t', new Date().getTime());
+            window.location.href = url.toString();
+        }, 65000);
+    </script>
+</body>
+</html>
