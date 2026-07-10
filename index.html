@@ -26,11 +26,12 @@
             box-sizing: border-box;
         }
         
-        /* CABECERA GENERAL SIN LOGOS */
+        /* CABECERA GENERAL CENTRADA */
         .header { 
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            position: relative;
             border-bottom: 0.4vh solid #FFB300; 
             padding-bottom: 0.8vh; 
             margin-bottom: 1vh; 
@@ -38,15 +39,23 @@
         }
         
         .top-airport-title { 
-            font-size: 3.8vh; 
+            font-size: 5.5vh; 
             font-weight: 900; 
             color: #FFFFFF; 
             text-transform: uppercase; 
             margin: 0; 
             letter-spacing: 2px; 
+            text-align: center;
         }
         
-        .clock { color: #FFB300; font-size: 3.8vh; font-weight: bold; font-variant-numeric: tabular-nums; }
+        .clock { 
+            position: absolute;
+            right: 1.5vw;
+            color: #FFB300; 
+            font-size: 3.8vh; 
+            font-weight: bold; 
+            font-variant-numeric: tabular-nums; 
+        }
         
         /* DISEÑO COMPARTIDO EN DOS SECCIONES */
         .fids-split-wrapper {
@@ -98,7 +107,7 @@
             color: #8E8E93; 
             border-bottom: 0.3vh solid #2C2C2E; 
             padding: 0.6vh 0.8vw; 
-            font-size: 1.8vh; 
+            font-size: 2.6vh; 
             text-transform: uppercase; 
         }
         
@@ -132,6 +141,11 @@
             object-fit: contain;
             display: inline-block; 
             vertical-align: middle;
+        }
+        
+        /* Regla específica para controlar y reducir el tamaño del logo de Viva */
+        .logo-aerolinea[src*="VI.png"] {
+            height: 3.5vh !important;
         }
         
         .texto-aerolinea { 
@@ -194,9 +208,8 @@
     </div>
 
     <script>
-        // Inyección estructural de datos JSON desde Python
         const arrSalidas = [{"clase_fila": "", "origen_destino": "SJD", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "644", "hora": "13:25:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3221", "hora": "13:34:00", "sala_puerta": "4", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2027", "hora": "14:35:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3223", "hora": "17:45:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "BJX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "604", "hora": "19:00:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1397", "hora": "20:18:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5117", "hora": "21:25:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3245", "hora": "21:50:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4009", "hora": "23:00:00", "sala_puerta": "2", "estatus": "A TIEMPO"}];
-        const arrLlegadas = [{"clase_fila": " resaltado", "origen_destino": "HUX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "613", "hora": "12:43:00", "sala_puerta": "", "estatus": "ARRIVADO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3552", "hora": "12:53:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2026", "hora": "13:55:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3554", "hora": "16:38:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "SJD", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "645", "hora": "18:24:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1396", "hora": "19:37:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "LAX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1782", "hora": "20:44:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5116", "hora": "21:00:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3344", "hora": "21:15:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "BJX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "605", "hora": "21:48:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4008", "hora": "22:20:00", "sala_puerta": "", "estatus": "A TIEMPO"}];
+        const arrLlegadas = [{"clase_fila": " resaltado", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3552", "hora": "12:53:00", "sala_puerta": "", "estatus": "ARRIVADO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2026", "hora": "13:55:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3554", "hora": "16:38:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "SJD", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "645", "hora": "18:24:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1396", "hora": "19:37:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "LAX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1782", "hora": "20:44:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5116", "hora": "21:00:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3344", "hora": "21:15:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "BJX", "aerolinea": "<img src=\"recursos/vo.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "605", "hora": "21:48:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4008", "hora": "22:20:00", "sala_puerta": "", "estatus": "A TIEMPO"}];
         
         let indexSalidas = 0;
         let indexLlegadas = 0;
@@ -210,7 +223,6 @@
         updateClock();
 
         function renderTablas() {
-            // Renderizar Bloque Dinámico de Salidas
             const tSalidas = document.getElementById('bodySalidas');
             tSalidas.innerHTML = '';
             let sBloque = arrSalidas.slice(indexSalidas, indexSalidas + LIMITE_FILAS);
@@ -229,7 +241,6 @@
                     </tr>`;
             });
 
-            // Renderizar Bloque Dinámico de Llegadas
             const tLlegadas = document.getElementById('bodyLlegadas');
             tLlegadas.innerHTML = '';
             let lBloque = arrLlegadas.slice(indexLlegadas, indexLlegadas + LIMITE_FILAS);
@@ -249,24 +260,18 @@
         }
 
         function paginarContenidos() {
-            // Avanzar Salidas en bloques de 5
             if (arrSalidas.length > LIMITE_FILAS) {
                 indexSalidas = (indexSalidas + LIMITE_FILAS) >= arrSalidas.length ? 0 : indexSalidas + LIMITE_FILAS;
             }
-            // Avanzar Llegadas en bloques de 5
             if (arrLlegadas.length > LIMITE_FILAS) {
                 indexLlegadas = (indexLlegadas + LIMITE_FILAS) >= arrLlegadas.length ? 0 : indexLlegadas + LIMITE_FILAS;
             }
             renderTablas();
         }
 
-        // Inicialización primaria
         renderTablas();
-        
-        // Ejecución cíclica interna de paginación cada 15 segundos
         setInterval(paginarContenidos, 15000);
         
-        // Recarga dura del archivo HTML para obtener los datos nuevos procesados por Python
         setTimeout(function() {
             const url = new URL(window.location.href);
             url.searchParams.set('t', new Date().getTime());
