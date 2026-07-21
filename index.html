@@ -26,7 +26,6 @@
             box-sizing: border-box;
         }
         
-        /* CABECERA GENERAL CENTRADA */
         .header { 
             display: flex;
             justify-content: center;
@@ -57,7 +56,6 @@
             font-variant-numeric: tabular-nums; 
         }
         
-        /* DISEÑO COMPARTIDO EN DOS SECCIONES */
         .fids-split-wrapper {
             display: flex;
             flex-direction: column;
@@ -74,7 +72,6 @@
             overflow: hidden;
         }
         
-        /* LÍNEA SEPARADORA MEDIAL */
         .linea-separadora {
             border-top: 0.5vh solid #FFB300;
             margin: 0.8vh 0;
@@ -82,9 +79,8 @@
             width: 100%;
         }
         
-        /* TEXTOS OPERATIVOS CENTRALIZADOS */
         .section-title {
-            font-size: 3.2vh;
+            font-size: 3.8vh;
             font-weight: 900;
             text-transform: uppercase;
             text-align: center;
@@ -107,16 +103,16 @@
             color: #8E8E93; 
             border-bottom: 0.3vh solid #2C2C2E; 
             padding: 0.6vh 0.8vw; 
-            font-size: 2.6vh; 
+            font-size: 3.0vh; 
             text-transform: uppercase; 
         }
         
         td { 
-            height: 6vh; 
+            height: 7vh; 
             padding: 0.4vh 0.8vw; 
             border-bottom: 1px solid #1C1C1E; 
             vertical-align: middle; 
-            font-size: 2.8vh; 
+            font-size: 3.5vh; 
             font-weight: bold;
             white-space: nowrap;
             overflow: hidden;
@@ -133,6 +129,7 @@
         .estatus-a-tiempo { color: #00FF00; }
         .estatus-demorado { color: #FF3B30; }
         .estatus-arrivado { color: #34C759; }
+        .estatus-cancelado { color: #FF3B30; } /* Color rojo para Cancelados */
         
         .logo-aerolinea { 
             height: 5vh !important;       
@@ -143,7 +140,6 @@
             vertical-align: middle;
         }
         
-        /* Regla específica para controlar y reducir el tamaño del logo de Viva */
         .logo-aerolinea[src*="VI.png"] {
             height: 3.5vh !important;
         }
@@ -185,7 +181,6 @@
                 </table>
             </div>
             
-            <!-- LÍNEA DIVISORIA DE CONTROL -->
             <div class="linea-separadora"></div>
             
             <!-- MITAD INFERIOR: LLEGADAS -->
@@ -213,7 +208,7 @@
         
         let indexSalidas = 0;
         let indexLlegadas = 0;
-        const LIMITE_FILAS = 5;
+        const LIMITE_FILAS = 4; // Ajustado a 4 registros visibles
         
         function updateClock() {
             const now = new Date();
@@ -228,8 +223,15 @@
             let sBloque = arrSalidas.slice(indexSalidas, indexSalidas + LIMITE_FILAS);
             
             sBloque.forEach(v => {
-                let cls = v.estatus.toUpperCase().includes("ARRIVADO") ? "estatus-arrivado" : 
-                          (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO") ? "estatus-demorado" : "estatus-a-tiempo");
+                let cls = "estatus-a-tiempo";
+                if (v.estatus.toUpperCase().includes("ARRIVADO")) {
+                    cls = "estatus-arrivado";
+                } else if (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO")) {
+                    cls = "estatus-demorado";
+                } else if (v.estatus.toUpperCase().includes("CANCELADO")) {
+                    cls = "estatus-cancelado";
+                }
+                
                 tSalidas.innerHTML += `
                     <tr class="${v.clase_fila}">
                         <td class="vuelo" style="width: 25%;">${v.origen_destino}</td>
@@ -246,8 +248,15 @@
             let lBloque = arrLlegadas.slice(indexLlegadas, indexLlegadas + LIMITE_FILAS);
             
             lBloque.forEach(v => {
-                let cls = v.estatus.toUpperCase().includes("ARRIVADO") ? "estatus-arrivado" : 
-                          (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO") ? "estatus-demorado" : "estatus-a-tiempo");
+                let cls = "estatus-a-tiempo";
+                if (v.estatus.toUpperCase().includes("ARRIVADO")) {
+                    cls = "estatus-arrivado";
+                } else if (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO")) {
+                    cls = "estatus-demorado";
+                } else if (v.estatus.toUpperCase().includes("CANCELADO")) {
+                    cls = "estatus-cancelado";
+                }
+                
                 tLlegadas.innerHTML += `
                     <tr class="${v.clase_fila}">
                         <td class="vuelo" style="width: 30%;">${v.origen_destino}</td>
