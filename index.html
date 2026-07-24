@@ -26,6 +26,7 @@
             box-sizing: border-box;
         }
         
+        /* CABECERA GENERAL CENTRADA */
         .header { 
             display: flex;
             justify-content: center;
@@ -56,6 +57,7 @@
             font-variant-numeric: tabular-nums; 
         }
         
+        /* DISEÑO COMPARTIDO EN DOS SECCIONES */
         .fids-split-wrapper {
             display: flex;
             flex-direction: column;
@@ -72,6 +74,7 @@
             overflow: hidden;
         }
         
+        /* LÍNEA SEPARADORA MEDIAL */
         .linea-separadora {
             border-top: 0.5vh solid #FFB300;
             margin: 0.8vh 0;
@@ -79,8 +82,9 @@
             width: 100%;
         }
         
+        /* TEXTOS OPERATIVOS CENTRALIZADOS */
         .section-title {
-            font-size: 3.8vh;
+            font-size: 3.2vh;
             font-weight: 900;
             text-transform: uppercase;
             text-align: center;
@@ -103,16 +107,16 @@
             color: #8E8E93; 
             border-bottom: 0.3vh solid #2C2C2E; 
             padding: 0.6vh 0.8vw; 
-            font-size: 3.0vh; 
+            font-size: 2.6vh; 
             text-transform: uppercase; 
         }
         
         td { 
-            height: 7vh; 
+            height: 6vh; 
             padding: 0.4vh 0.8vw; 
             border-bottom: 1px solid #1C1C1E; 
             vertical-align: middle; 
-            font-size: 3.5vh; 
+            font-size: 2.8vh; 
             font-weight: bold;
             white-space: nowrap;
             overflow: hidden;
@@ -129,7 +133,6 @@
         .estatus-a-tiempo { color: #00FF00; }
         .estatus-demorado { color: #FF3B30; }
         .estatus-arrivado { color: #34C759; }
-        .estatus-cancelado { color: #FF3B30; } /* Color rojo para Cancelados */
         
         .logo-aerolinea { 
             height: 5vh !important;       
@@ -140,6 +143,7 @@
             vertical-align: middle;
         }
         
+        /* Regla específica para controlar y reducir el tamaño del logo de Viva */
         .logo-aerolinea[src*="VI.png"] {
             height: 3.5vh !important;
         }
@@ -181,6 +185,7 @@
                 </table>
             </div>
             
+            <!-- LÍNEA DIVISORIA DE CONTROL -->
             <div class="linea-separadora"></div>
             
             <!-- MITAD INFERIOR: LLEGADAS -->
@@ -203,12 +208,12 @@
     </div>
 
     <script>
-        const arrSalidas = [{"clase_fila": "", "origen_destino": "SLP", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "628", "hora": "06:00:00", "sala_puerta": "4", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "AGU", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "600", "hora": "06:13:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3553", "hora": "07:50:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3243", "hora": "08:35:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1399", "hora": "08:26:00", "sala_puerta": "4", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4001", "hora": "08:50:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "ZIH", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "640", "hora": "10:00:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "5557", "hora": "11:30:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "IAH", "aerolinea": "<img src=\"recursos/HOU.png\" alt=\"United\" class=\"logo-aerolinea\" style=\"height: 9.5vh !important;\">", "vuelo": "4277", "hora": "12:25:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "PVR", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "624", "hora": "13:29:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TGZ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "632", "hora": "13:39:00", "sala_puerta": "4", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3221", "hora": "13:34:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MID", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "9255", "hora": "14:05:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2027", "hora": "14:35:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "5223", "hora": "17:45:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "IAH", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "832", "hora": "18:00:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1397", "hora": "20:18:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3245", "hora": "20:30:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5117", "hora": "21:25:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "EWR", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "504", "hora": "22:49:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4009", "hora": "23:00:00", "sala_puerta": "2", "estatus": "A TIEMPO"}];
-        const arrLlegadas = [{"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3220", "hora": "07:15:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3242", "hora": "07:40:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1398", "hora": "07:47:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4000", "hora": "07:55:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "SLP", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "629", "hora": "08:51:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "5222", "hora": "10:47:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "IAH", "aerolinea": "<img src=\"recursos/HOU.png\" alt=\"United\" class=\"logo-aerolinea\" style=\"height: 9.5vh !important;\">", "vuelo": "4276", "hora": "11:26:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "AGU", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "601", "hora": "12:30:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "ZIH", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "641", "hora": "12:45:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3552", "hora": "12:53:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MID", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "9254", "hora": "13:20:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2026", "hora": "13:55:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "5556", "hora": "16:38:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TGZ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "633", "hora": "16:56:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "PVR", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "625", "hora": "17:10:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1396", "hora": "19:37:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3244", "hora": "19:50:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5116", "hora": "21:00:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4008", "hora": "22:20:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "IAH", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "833", "hora": "23:43:00", "sala_puerta": "", "estatus": "A TIEMPO"}];
+        const arrSalidas = [{"clase_fila": "", "origen_destino": "VSA", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "636", "hora": "06:00:00", "sala_puerta": "4", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3553", "hora": "07:50:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3243", "hora": "08:25:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1399", "hora": "08:26:00", "sala_puerta": "4", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4001", "hora": "08:50:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2025", "hora": "09:45:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "HUX", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "612", "hora": "09:55:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "LAX", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1783", "hora": "11:18:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3555", "hora": "11:30:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "IAH", "aerolinea": "<img src=\"recursos/HOU.png\" alt=\"United\" class=\"logo-aerolinea\" style=\"height: 9.5vh !important;\">", "vuelo": "4277", "hora": "12:25:00", "sala_puerta": "1", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "SJD", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "644", "hora": "13:25:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3221", "hora": "13:34:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2027", "hora": "14:35:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3223", "hora": "17:45:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "BJX", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "604", "hora": "19:00:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1397", "hora": "20:18:00", "sala_puerta": "3", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5117", "hora": "21:35:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3245", "hora": "20:30:00", "sala_puerta": "2", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4009", "hora": "23:00:00", "sala_puerta": "2", "estatus": "A TIEMPO"}];
+        const arrLlegadas = [{"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3220", "hora": "07:15:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3242", "hora": "07:40:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1398", "hora": "07:47:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4000", "hora": "07:55:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2024", "hora": "09:05:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "VSA", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "637", "hora": "09:14:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "EWR", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "505", "hora": "09:59:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3222", "hora": "10:47:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "IAH", "aerolinea": "<img src=\"recursos/HOU.png\" alt=\"United\" class=\"logo-aerolinea\" style=\"height: 9.5vh !important;\">", "vuelo": "4276", "hora": "11:26:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "HUX", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "613", "hora": "12:43:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3552", "hora": "12:53:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "2026", "hora": "13:55:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "CUN", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "3554", "hora": "16:38:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "SJD", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "645", "hora": "18:24:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1396", "hora": "19:37:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "LAX", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "1782", "hora": "20:44:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "TIJ", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "5116", "hora": "21:00:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "GDL", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "3244", "hora": "19:50:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "BJX", "aerolinea": "<img src=\"recursos/vo2.png\" alt=\"Volaris\" class=\"logo-aerolinea\">", "vuelo": "605", "hora": "21:48:00", "sala_puerta": "", "estatus": "A TIEMPO"}, {"clase_fila": "", "origen_destino": "MTY", "aerolinea": "<img src=\"recursos/VI.png\" alt=\"Viva\" class=\"logo-aerolinea\" style=\"height: 4.5vh !important;\">", "vuelo": "4008", "hora": "22:20:00", "sala_puerta": "", "estatus": "A TIEMPO"}];
         
         let indexSalidas = 0;
         let indexLlegadas = 0;
-        const LIMITE_FILAS = 4; // Ajustado a 4 registros visibles
+        const LIMITE_FILAS = 5;
         
         function updateClock() {
             const now = new Date();
@@ -223,15 +228,8 @@
             let sBloque = arrSalidas.slice(indexSalidas, indexSalidas + LIMITE_FILAS);
             
             sBloque.forEach(v => {
-                let cls = "estatus-a-tiempo";
-                if (v.estatus.toUpperCase().includes("ARRIVADO")) {
-                    cls = "estatus-arrivado";
-                } else if (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO")) {
-                    cls = "estatus-demorado";
-                } else if (v.estatus.toUpperCase().includes("CANCELADO")) {
-                    cls = "estatus-cancelado";
-                }
-                
+                let cls = v.estatus.toUpperCase().includes("ARRIVADO") ? "estatus-arrivado" : 
+                          (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO") ? "estatus-demorado" : "estatus-a-tiempo");
                 tSalidas.innerHTML += `
                     <tr class="${v.clase_fila}">
                         <td class="vuelo" style="width: 25%;">${v.origen_destino}</td>
@@ -248,15 +246,8 @@
             let lBloque = arrLlegadas.slice(indexLlegadas, indexLlegadas + LIMITE_FILAS);
             
             lBloque.forEach(v => {
-                let cls = "estatus-a-tiempo";
-                if (v.estatus.toUpperCase().includes("ARRIVADO")) {
-                    cls = "estatus-arrivado";
-                } else if (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO")) {
-                    cls = "estatus-demorado";
-                } else if (v.estatus.toUpperCase().includes("CANCELADO")) {
-                    cls = "estatus-cancelado";
-                }
-                
+                let cls = v.estatus.toUpperCase().includes("ARRIVADO") ? "estatus-arrivado" : 
+                          (v.estatus.toUpperCase().includes("DEMORADO") || v.estatus.toUpperCase().includes("RETARDADO") ? "estatus-demorado" : "estatus-a-tiempo");
                 tLlegadas.innerHTML += `
                     <tr class="${v.clase_fila}">
                         <td class="vuelo" style="width: 30%;">${v.origen_destino}</td>
